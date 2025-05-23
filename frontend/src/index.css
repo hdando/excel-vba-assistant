@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.overflow-auto {
+  overflow: auto !important;
+}
+
+Style pour les tables Excel
+table {
+  table-layout: fixed;
+}
+
+/* Curseur Excel */
+td[style*="cursor: cell"] {
+  cursor: cell;
+}
