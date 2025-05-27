@@ -1,16 +1,101 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-.overflow-auto {
-  overflow: auto !important;
+
+/* Container de scroll */
+#excel-scroll-container {
+  overflow-x: auto !important;
+  overflow-y: auto !important;
 }
 
-Style pour les tables Excel
-table {
+/* Table Excel avec largeur fixe */
+.excel-table {
+  border-collapse: collapse;
   table-layout: fixed;
+  display: table;
+}
+
+.excel-table th,
+.excel-table td {
+  width: 150px;
+  min-width: 150px;
+  max-width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-sizing: border-box;
+}
+
+/* Première colonne (numéros de lignes) sticky */
+.excel-table th:first-child,
+.excel-table td:first-child {
+  width: 60px !important;
+  min-width: 60px !important;
+  max-width: 60px !important;
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  background-color: #e5e7eb;
+}
+
+/* En-têtes sticky en haut */
+.excel-table thead {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.excel-table thead th {
+  background-color: #f3f4f6;
+  font-weight: 600;
+  border-bottom: 2px solid #d1d5db;
+}
+
+/* Coin supérieur gauche (intersection) */
+.excel-table thead th:first-child {
+  z-index: 11;
+  background-color: #d1d5db;
+}
+
+/* Bordure plus visible pour la première colonne */
+.excel-table th:first-child,
+.excel-table td:first-child {
+  border-right: 2px solid #9ca3af !important;
+}
+
+/* Hover effet */
+.excel-table tbody tr:hover td {
+  background-color: rgba(59, 130, 246, 0.05);
+}
+
+/* Cellule active */
+.excel-table td.active {
+  outline: 2px solid #3b82f6;
+  outline-offset: -2px;
 }
 
 /* Curseur Excel */
 td[style*="cursor: cell"] {
   cursor: cell;
+}
+
+/* Scrollbar styling */
+#excel-scroll-container::-webkit-scrollbar {
+  height: 14px;
+  width: 14px;
+}
+
+#excel-scroll-container::-webkit-scrollbar-track {
+  background: #f3f4f6;
+  border-radius: 4px;
+}
+
+#excel-scroll-container::-webkit-scrollbar-thumb {
+  background: #9ca3af;
+  border-radius: 4px;
+  border: 2px solid #f3f4f6;
+}
+
+#excel-scroll-container::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
 }
